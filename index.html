@@ -3,117 +3,623 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi guía de autocuidado</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link
+        href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Nunito:wght@300;400;600&display=swap"
+        rel="stylesheet"
+    >
+
     <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background-color: #f5f7fb;
-            margin: 0;
-            padding: 0;
-            color: #333;
+        :root {
+            --vs-soft-pink: #ffeef3;
+            --vs-pink: #f7c7d9;
+            --vs-deep-pink: #e55a8a;
+            --vs-text-main: #3c3c3c;
+            --vs-border-soft: #f3d7e2;
         }
 
-        header {
-            background-color: #c6d6ff;
-            padding: 1.5rem;
+        body {
+            background-color: var(--vs-soft-pink);
+            font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--vs-text-main);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f2d6e0;
+            font-size: 0.95rem;
+        }
+
+        .navbar-brand {
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c84776;
+        }
+
+        .navbar-brand:hover {
+            color: #b13865;
+        }
+
+        .navbar .nav-link {
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.8rem;
+        }
+
+        .navbar .nav-link:hover {
+            color: #c84776;
+        }
+
+        .btn-contact {
+            border-radius: 999px;
+            padding: 0.35rem 1.4rem;
+            background-color: #ffffff;
+            border: 1px solid var(--vs-deep-pink);
+            color: var(--vs-deep-pink);
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--vs-deep-pink);
+            color: #ffffff;
+        }
+
+        /* HERO */
+        .hero {
+            background-color: var(--vs-soft-pink);
+            border-bottom: 1px solid var(--vs-border-soft);
+            padding: 2.8rem 1rem 2.2rem;
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            margin-bottom: 0.4rem;
+            font-size: 2.3rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
-        header p {
-            margin-top: 0.5rem;
-            font-size: 1rem;
+        .hero p {
+            margin: 0;
+            font-size: 0.97rem;
+            color: #6b6b6b;
+        }
+
+        /* CARDS / LAYOUT */
+        .card-soft {
+            border-radius: 1rem;
+            border: 1px solid #f3d7e2;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            background-color: #ffffff;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* Avatar y etiquetas del perfil */
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #e55a8a, #f7c7d9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 1.6rem;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            background-color: #fff;
+            border: 1px solid #ebc1d3;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            color: #c84776;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-text {
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem 3rem;
+            margin-top: 1.8rem;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #f2d6e0;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777777;
+            margin-top: 2rem;
         }
 
         section {
+            scroll-margin-top: 90px;
+        }
+
+        /* CARRUSEL */
+        .carousel-inner {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 8%;
+        }
+
+        /* ACCORDION */
+        .accordion-item {
+            border: 1px solid #f3d7e2;
+            border-radius: 0.9rem;
+            margin-bottom: 0.7rem;
+            overflow: hidden;
+        }
+
+        .accordion-button {
             background-color: #ffffff;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        section h2 {
-            margin-top: 0;
-            font-size: 1.4rem;
+        .accordion-button:not(.collapsed) {
+            color: #c84776;
+            background-color: #fff5f8;
         }
 
-        section p {
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
+        .accordion-body {
+            font-size: 0.94rem;
         }
 
-        ul {
-            padding-left: 1.2rem;
-            margin: 0.5rem 0 0;
+        /* MODAL */
+        .modal-content {
+            border-radius: 1rem;
+            border: 1px solid #f3d7e2;
         }
 
-        li {
-            margin-bottom: 0.35rem;
+        .modal-title {
+            font-family: "Playfair Display", serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .btn-contact-full {
+            border-radius: 999px;
+            padding: 0.5rem 1.4rem;
+            background-color: var(--vs-deep-pink);
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .btn-contact-full:hover {
+            background-color: #c84776;
+        }
+
+        /* Botón scroll-to-top */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--vs-deep-pink);
+            color: #ffffff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 999;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #c84776;
         }
     </style>
 </head>
 <body>
-    <header>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">Guía de autocuidado</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#rutina-manana">Rutina de mañana</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rutina-noche">Rutina de noche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#habitos-dia">Hábitos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#musica">Música</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Sobre mí</a></li>
+
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-contact" data-bs-toggle="modal" data-bs-target="#contactModal">
+                            Contacto
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="inicio" class="hero" data-aos="fade-up">
         <h1>Mi guía de autocuidado</h1>
         <p>Pequeñas acciones diarias para sentirme más tranquila, presente y en equilibrio.</p>
     </header>
 
-    <main>
-        <section>
-            <h2>Rutina de mañana</h2>
-            <p>
-                La forma en la que inicio mi día influye mucho en cómo me siento el resto de la jornada. 
-                No se trata de hacer mil cosas, sino de elegir algunos hábitos sencillos que me ayuden a 
-                despertar con calma y claridad.
-            </p>
-            <ul>
-                <li><strong>Tomar agua al despertar:</strong> antes de revisar el celular, bebo un vaso de agua para hidratarme y activar mi cuerpo.</li>
-                <li><strong>Estiramientos suaves:</strong> realizo algunos estiramientos básicos para relajar músculos y soltar la tensión acumulada.</li>
-                <li><strong>Respiraciones profundas:</strong> dedico uno o dos minutos a respirar profundo, inhalando por la nariz y exhalando lentamente por la boca.</li>
-                <li><strong>Pequeña intención del día:</strong> pienso en una frase o propósito sencillo, por ejemplo: “Hoy me trato con paciencia”.</li>
-            </ul>
-        </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+        <div class="row g-4">
 
-        <section>
-            <h2>Rutina de noche</h2>
-            <p>
-                La noche es un buen momento para desconectarme poco a poco del ritmo del día y preparar 
-                mi mente para descansar mejor. No necesito una rutina perfecta, solo pequeños pasos que 
-                me ayuden a bajar la velocidad.
-            </p>
-            <ul>
-                <li><strong>Reducir pantallas:</strong> intento disminuir el uso del celular y la computadora al menos unos minutos antes de dormir.</li>
-                <li><strong>Escribir algo breve:</strong> puedo anotar cómo me sentí en el día, algo que agradezco o algo que quiero mejorar.</li>
-                <li><strong>Ambiente más tranquilo:</strong> bajo el volumen, ajusto la luz y, si puedo, pongo música suave o sonidos relajantes.</li>
-                <li><strong>Pequeño cierre del día:</strong> reconozco al menos una cosa que hice bien, por pequeña que parezca.</li>
-            </ul>
-        </section>
+            <!-- PROFILE -->
+            <aside class="col-lg-4">
+                <div id="profile" class="card card-soft p-3 p-md-4 profile-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="profile-avatar">A</div>
 
-        <section>
-            <h2>Hábitos para sentirme mejor durante el día</h2>
-            <p>
-                Además de las rutinas de mañana y noche, hay acciones muy simples que puedo integrar en 
-                cualquier momento del día para cuidar mi bienestar emocional y físico.
-            </p>
-            <ul>
-                <li><strong>Pausas conscientes:</strong> cuando me siento saturada, hago una pausa breve para respirar, moverme o cambiar de postura.</li>
-                <li><strong>Movimiento ligero:</strong> caminar unos minutos, subir escaleras o hacer movimientos suaves ayuda a despejar mi mente.</li>
-                <li><strong>Hidratación constante:</strong> tener agua cerca y beber con frecuencia para evitar dolor de cabeza o cansancio extra.</li>
-                <li><strong>Ser amable conmigo misma:</strong> recordar que estoy haciendo lo mejor que puedo con lo que tengo en este momento.</li>
-            </ul>
-        </section>
+                    <h2>Sobre la creadora</h2>
+                    <p class="section-text">
+                        Soy Andrea, estudiante de Programación y Transformación Digital. 
+                        Me interesa combinar la tecnología con el bienestar personal, creando 
+                        herramientas sencillas que ayuden a organizar la mente, el tiempo y las emociones.
+                    </p>
+                    <p class="section-text mb-1"><strong>Enfoque:</strong> autocuidado, productividad y organización.</p>
+                    <p class="section-text mb-1"><strong>Objetivo de esta página:</strong> reunir ideas simples de autocuidado
+                        que puedan integrarse en la vida diaria de forma realista.</p>
+                    <p class="section-text mb-0"><strong>Ubicación:</strong> México.</p>
+
+                    <div class="profile-tags">
+                        <span class="tag">Autocuidado</span>
+                        <span class="tag">Productividad</span>
+                        <span class="tag">Organización</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- SECCION DERECHA -->
+            <section class="col-lg-8">
+
+                <!-- CARRUSEL -->
+                <div class="card card-soft mb-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="card-body">
+                        <div id="selfcareCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+                                    <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg" alt="Autocuidado 1">
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/4056536/pexels-photo-4056536.jpeg" alt="Autocuidado 2">
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg" alt="Autocuidado 3">
+                                </div>
+
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#selfcareCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#selfcareCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACCORDION -->
+                <div class="card card-soft mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body">
+                        <div class="accordion" id="selfCareAccordion">
+
+                            <!-- RUTINA MAÑANA -->
+                            <div class="accordion-item" id="rutina-manana">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#morningCollapse">
+                                        Rutina de mañana
+                                    </button>
+                                </h2>
+
+                                <div id="morningCollapse" class="accordion-collapse collapse show">
+                                    <div class="accordion-body">
+                                        <p class="section-text">
+                                            La forma en la que inicio mi día influye mucho en cómo me siento el resto de la jornada. 
+                                            No se trata de despertar perfecta, sino de darme unos minutos para conectar conmigo antes 
+                                            de entrar a las responsabilidades y pendientes.
+                                        </p>
+                                        <ul>
+                                            <li><strong>Despertar sin correr:</strong> evito posponer la alarma una y otra vez. Me doy unos segundos para estirarme todavía acostada, notar mi respiración y abrir los ojos con calma.</li>
+                                            <li><strong>Tomar agua al despertar:</strong> antes de revisar el celular, bebo un vaso de agua para hidratarme y activar mi cuerpo. Esto me ayuda a sentir menos pesadez al comenzar el día.</li>
+                                            <li><strong>Estiramientos suaves:</strong> realizo algunos estiramientos básicos de cuello, hombros, brazos y espalda. No es una rutina larga, solo unos minutos para soltar la tensión acumulada.</li>
+                                            <li><strong>Respiraciones profundas:</strong> dedico uno o dos minutos a respirar profundo, inhalando por la nariz y exhalando lentamente por la boca. Es una forma sencilla de darle una señal de calma a mi sistema nervioso.</li>
+                                            <li><strong>Pequeña intención del día:</strong> pienso en una frase o propósito sencillo, por ejemplo: “Hoy me trato con paciencia”, “Hoy escucho mejor a mi cuerpo” o “Hoy hago una cosa a la vez”.</li>
+                                            <li><strong>Primer contacto con la luz natural:</strong> si es posible, abro cortinas o me acerco a una ventana para que mi cuerpo reconozca que el día empezó. Esto también ayuda a regular mi energía.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- RUTINA NOCHE -->
+                            <div class="accordion-item" id="rutina-noche">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nightCollapse">
+                                        Rutina de noche
+                                    </button>
+                                </h2>
+
+                                <div id="nightCollapse" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <p class="section-text">
+                                            La noche es un buen momento para bajar la velocidad y darle a mi mente un cierre del día. 
+                                            No necesito una rutina perfecta ni larga; lo importante es crear una sensación de cierre 
+                                            y cuidado antes de dormir.
+                                        </p>
+                                        <ul>
+                                            <li><strong>Reducir pantallas:</strong> intento disminuir el uso del celular y la computadora al menos unos minutos antes de dormir, para que mis ojos y mi mente descansen un poco del estímulo constante.</li>
+                                            <li><strong>Escribir algo breve:</strong> anoto cómo me sentí en el día, algo que agradezco o algo que quiero soltar. No tiene que ser un texto largo; a veces con una frase es suficiente.</li>
+                                            <li><strong>Cuidar el ambiente:</strong> bajo el volumen, ajusto la luz y, si puedo, uso una lámpara cálida, una vela o algún aroma relajante para hacer el espacio más cómodo.</li>
+                                            <li><strong>Rutina ligera de cuidado personal:</strong> lavarme la cara, aplicar crema o un pequeño masaje en las manos también se vuelve un mini ritual de autocuidado sencillo.</li>
+                                            <li><strong>Pequeño cierre del día:</strong> reconozco al menos una cosa que hice bien, aunque parezca pequeña. Esto me ayuda a no irme a dormir solo con la sensación de “me faltó hacer más”.</li>
+                                            <li><strong>Preparar el día siguiente:</strong> dejo listo algo sencillo (mi botella de agua, la mochila, una lista corta de pendientes) para reducir el estrés de la mañana siguiente.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HABITOS DEL DÍA -->
+                            <div class="accordion-item" id="habitos-dia">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#habitsCollapse">
+                                        Hábitos para sentirme mejor durante el día
+                                    </button>
+                                </h2>
+
+                                <div id="habitsCollapse" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <p class="section-text">
+                                            No siempre puedo controlar todo lo que pasa en el día, pero sí puedo elegir pequeños hábitos 
+                                            que me ayudan a cuidar mi energía, mi cuerpo y mi bienestar emocional.
+                                        </p>
+                                        <ul>
+                                            <li><strong>Pausas conscientes:</strong> cuando me siento saturada, hago una pausa breve para respirar profundo, moverme un poco o simplemente dejar de mirar la pantalla por unos minutos.</li>
+                                            <li><strong>Movimiento ligero:</strong> caminar unos minutos, subir escaleras o hacer estiramientos suaves ayuda a despejar mi mente y a evitar que todo el día sea estar sentada.</li>
+                                            <li><strong>Hidratación constante:</strong> tener agua cerca y beber con frecuencia para evitar dolor de cabeza o cansancio extra. A veces pongo recordatorios suaves para no olvidarlo.</li>
+                                            <li><strong>Límites con el multitasking:</strong> trato de enfocarme en una cosa a la vez cuando es posible. Aunque parezca que hago menos, en realidad mi mente se siente más organizada.</li>
+                                            <li><strong>Micro espacios agradables:</strong> ordenar un poco mi escritorio, usar un fondo de pantalla que me guste o prender una luz cálida hace que el espacio se sienta más amable.</li>
+                                            <li><strong>Ser amable conmigo misma:</strong> recordar que no tengo que hacerlo todo perfecto. Avanzar poco a poco también cuenta y es parte del autocuidado.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MÚSICA -->
+                <section id="musica" class="card card-soft mb-4" data-aos="fade-up" data-aos-delay="250">
+                    <div class="card-body">
+                        <h3 class="section-title">Música para acompañar</h3>
+                        <p class="section-text">
+                            Puedes usar esta música para acompañar tu rutina de mañana, tu cierre de día o algún momento 
+                            en el que quieras hacer una pausa tranquila.
+                        </p>
+
+                        <div class="ratio ratio-16x9">
+                            <iframe 
+                                src="https://www.youtube.com/embed/IV8LO-T66ys"
+                                title="Música relajante"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer>
+        Proyecto de guía de autocuidado — Sitio en desarrollo
+    </footer>
+
+    <!-- MODAL CONTACTO -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Contacto</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- ALERTA DE CONFIRMACIÓN / ERROR -->
+                    <div id="formAlert" class="alert d-none" role="alert"></div>
+
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nombre</label>
+                            <input class="form-control" type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Correo electrónico</label>
+                            <input class="form-control" type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="message">Mensaje</label>
+                            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                        </div>
+
+                        <button class="btn btn-contact-full w-100" type="submit">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón scroll-to-top -->
+    <button id="scrollTopBtn" aria-label="Volver arriba">↑</button>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- JS PARA ENVIAR AL SCRIPT Y MOSTRAR MENSAJE + SCROLL TOP + AOS -->
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const formAlert = document.getElementById('formAlert');
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // URL de Web App de Google Apps Script 
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwkGeQNW8Ny0gjlZBszXUSoOwzM-c8jhKzkwO_SsmbIw0KCB7iz78BoQHYDIXWWRdrqOA/exec';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta');
+                }
+
+                formAlert.classList.remove('d-none', 'alert-danger');
+                formAlert.classList.add('alert', 'alert-success');
+                formAlert.textContent = 'Gracias por tu mensaje. Lo he recibido correctamente y te contactaré pronto :).';
+
+                contactForm.reset();
+            } catch (error) {
+                formAlert.classList.remove('d-none', 'alert-success');
+                formAlert.classList.add('alert', 'alert-danger');
+                formAlert.textContent = 'Hubo un problema al enviar tu mensaje. Inténtalo de nuevo más tarde.';
+            }
+        });
+
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Botón scroll-to-top
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.style.display = 'block';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 
 </body>
 </html>
